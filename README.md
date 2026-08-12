@@ -103,6 +103,14 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
 
 ## Deployment
 
+All deployment scripts run **locally, from a terminal on your own machine** (or any VM/Cloud
+Shell you control) — clone this repo, `cd` into the repo root, create a Python virtual
+environment, `pip install` the dependencies, run `az login`, and run every `python fabric/...` /
+`python foundry/...` / `python datagen/...` command from that repo root. Nothing in this repo
+needs to be deployed to Azure App Service/Functions — the scripts just call Azure/Fabric/Foundry
+REST APIs from wherever you run them. The Copilot Studio steps instead use the `pac` CLI from the
+`copilotstudio/AutoFNOLAgent/` subfolder.
+
 Full step-by-step instructions, including exact scripts to run and troubleshooting tips, are in
 [`documents/Auto_FNOL_Deployment_Guide.docx`](documents/Auto_FNOL_Deployment_Guide.docx). Summary:
 
