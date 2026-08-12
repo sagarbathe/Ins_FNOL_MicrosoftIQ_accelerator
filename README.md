@@ -92,7 +92,8 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
   - `Auto_FNOL_Triage_Design_Document.docx` — solution architecture, Fabric/Foundry/Work IQ
     design details, Copilot Studio orchestration logic, and end-to-end workflow.
   - `Auto_FNOL_Prerequisites_and_Tenant_Readiness.docx` — required Azure/Fabric/Foundry/
-    Copilot Studio/M365 setup steps and a live tenant-readiness checklist.
+    Copilot Studio/M365 setup steps and a generic tenant-readiness self-check (no
+    tenant-specific names/IDs — see `.env.example` for how to plug in your own).
   - `Auto_FNOL_Sample_Emails.docx` — five ready-to-send sample FNOL intake emails covering
     different triage scenarios (fast-track, injury, fraud signal, subrogation, total loss),
     each with suggested follow-up questions to ask the Triage Agent to validate Fabric IQ,
