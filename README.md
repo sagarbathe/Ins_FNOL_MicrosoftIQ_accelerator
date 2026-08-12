@@ -108,25 +108,29 @@ Full step-by-step instructions, including exact scripts to run and troubleshooti
 0. **Prerequisites** — Azure subscription/RBAC, Fabric capacity + workspace, Foundry project
    (chat + embedding model deployments) with Azure AI Search, Power Platform environment with
    Copilot Studio, and Microsoft 365 licenses/mailbox. See doc section *"0. Prerequisites"*.
-1. **Generate & load sample data** — run `datagen/generate_fnol_data.py`, then
+1. **Configure your tenant** — copy `.env.example` to `.env` and fill in your Fabric
+   workspace/lakehouse IDs and Foundry/Search/OpenAI endpoints (see [Configuration](#configuration)
+   above). See doc section *"1. Configure Your Tenant (.env)"*.
+2. **Generate & load sample data** — run `datagen/generate_fnol_data.py`, then
    `datagen/load_to_lakehouse.py` to populate the Fabric lakehouse. See doc section
-   *"1. Generate & Load Sample Data (datagen/)"*.
-2. **Build Fabric IQ** — create the ontology/graph with `fabric/create_ontology.py` (now
+   *"2. Generate & Load Sample Data (datagen/)"*.
+3. **Build Fabric IQ** — create the ontology/graph with `fabric/create_ontology.py` (now
    includes the Claim→Adjuster relationship), configure and publish the Fabric Data Agent
    (`fabric/configure_data_agent*.py`), then validate via `fabric/test_mcp_dataagent.py`. See doc
-   section *"2. Build the Fabric IQ Ontology & Data Agent (fabric/)"*.
-3. **Build Foundry IQ** — index `foundry/kb_docs/*.md` with `foundry/build_search_index.py`, then
+   section *"3. Build the Fabric IQ Ontology & Data Agent (fabric/)"*.
+4. **Build Foundry IQ** — index `foundry/kb_docs/*.md` with `foundry/build_search_index.py`, then
    create the Foundry Agent with `foundry/create_foundry_agent.py`, which now also enables the
    Activity Protocol automatically so the agent is immediately callable from Copilot Studio/Teams.
-   See doc section *"3. Build the Foundry IQ Knowledge Agent (foundry/)"*.
-4. **Deploy the Copilot Studio orchestrator** — `pac copilot push` the `copilotstudio/AutoFNOLAgent`
-   solution, reconnect the Fabric/Foundry/Work IQ connection references, then `pac copilot publish`
-   and enable the Teams channel. See doc section *"4. Deploy the Copilot Studio Orchestrator Agent
+   See doc section *"4. Build the Foundry IQ Knowledge Agent (foundry/)"*.
+5. **Deploy the Copilot Studio orchestrator** — `pac copilot push` the `copilotstudio/AutoFNOLAgent`
+   solution, reconnect the Fabric/Foundry/Work IQ connection references (using the
+   `<YOUR_FABRIC_...>` placeholders from Section 1), then `pac copilot publish` and enable the
+   Teams channel. See doc section *"5. Deploy the Copilot Studio Orchestrator Agent
    (copilotstudio/)"*.
-5. **Validate end-to-end** — test structured (Fabric), general-knowledge (Foundry), compound, and
+6. **Validate end-to-end** — test structured (Fabric), general-knowledge (Foundry), compound, and
    Work IQ questions in both Copilot Studio Test chat and Teams, using
    `documents/Auto_FNOL_Sample_Emails.docx` as ready-made scenarios. See doc section
-   *"5. Validate End-to-End"*.
-6. **Troubleshooting** — common errors (Foundry activity-protocol error, 429 throttling, Fabric MCP
-   failures, M365 Copilot Chat limitations) and fixes are in doc section *"6. Troubleshooting Quick
-   Reference"*.
+   *"6. Validate End-to-End"*.
+7. **Troubleshooting** — common errors (missing `.env` values, Foundry activity-protocol error, 429
+   throttling, Fabric MCP failures, M365 Copilot Chat limitations) and fixes are in doc section
+   *"7. Troubleshooting Quick Reference"*.
