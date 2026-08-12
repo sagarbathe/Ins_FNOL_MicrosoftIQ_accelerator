@@ -1,0 +1,26 @@
+ShopId,Name,Network,Region,AvgCycleTimeDays
+SHOP-001,"Powers, Miller and Hunt Auto Body",Out-of-Network,South,14.0
+SHOP-002,Henry PLC Auto Body,In-Network,Northeast,10.2
+SHOP-003,"Hunt, Brown and Estrada Auto Body",In-Network,West,12.5
+SHOP-004,Hernandez-Nash Auto Body,Out-of-Network,Southwest,4.3
+SHOP-005,Hughes-Smith Auto Body,Out-of-Network,Midwest,11.1
+SHOP-006,Bell-Madden Auto Body,In-Network,Northeast,5.3
+SHOP-007,"Miller, Luna and Wallace Auto Body",Out-of-Network,Southwest,14.5
+SHOP-008,Lara-Roberts Auto Body,In-Network,South,10.8
+SHOP-009,"Waller, Coleman and Mosley Auto Body",Out-of-Network,Midwest,18.0
+SHOP-010,Houston PLC Auto Body,In-Network,Northeast,6.0
+SHOP-011,Thomas LLC Auto Body,In-Network,South,9.2
+SHOP-012,Mcneil-Fox Auto Body,Out-of-Network,Northeast,18.2
+SHOP-013,Jones-Choi Auto Body,In-Network,Southwest,7.9
+SHOP-014,Davis-Ortiz Auto Body,In-Network,Southwest,12.6
+SHOP-015,Perry-Peters Auto Body,In-Network,South,13.7
+SHOP-016,"Bradley, Melendez and Gonzalez Auto Body",In-Network,South,14.9
+SHOP-017,Roberts-Henry Auto Body,In-Network,Southwest,9.1
+SHOP-018,Davenport-Torres Auto Body,Out-of-Network,Midwest,17.9
+SHOP-019,"Singh, Walker and Moody Auto Body",In-Network,Midwest,20.1
+SHOP-020,Baker Ltd Auto Body,Out-of-Network,Northeast,14.7
+SHOP-021,"Kennedy, Valdez and Stafford Auto Body",Out-of-Network,West,14.1
+SHOP-022,White-Knox Auto Body,In-Network,Southwest,8.2
+SHOP-023,"Sanchez, Wilson and Ramirez Auto Body",Out-of-Network,West,7.4
+SHOP-024,George LLC Auto Body,Out-of-Network,West,8.4
+SHOP-025,"Castillo, Graham and Scott Auto Body",In-Network,Midwest,5.8

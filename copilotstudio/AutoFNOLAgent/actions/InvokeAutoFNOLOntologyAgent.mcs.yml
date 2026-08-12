@@ -1,0 +1,25 @@
+mcs.metadata:
+  componentName: InvokeAutoFNOLOntologyAgent
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: artifactId
+    # TODO: replace with your own Fabric Data Agent ID before importing this solution
+    value: <YOUR_FABRIC_DATA_AGENT_ID>
+
+  - kind: ManualTaskInput
+    propertyName: workspaceId
+    # TODO: replace with your own Fabric Workspace ID before importing this solution
+    value: <YOUR_FABRIC_WORKSPACE_ID>
+
+modelDisplayName: InvokeAutoFNOLOntologyAgent
+description: Queries the Fabric IQ Data Agent (DA_AutoFNOL_Ontology) over the Auto FNOL lakehouse tables - Policyholder, Vehicle, Adjuster, RepairShop, Policy, PolicyVehicle, Claim, FraudSignal, SubrogationFlag - for structured claim, policy, adjuster workload, fraud and subrogation questions.
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: copilots_header_cr29a_agent1.shared_fabricdataagent.737baa9ccc6d4ed8a7c09681030c076b
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ModelContextProtocolMetadata
+    operationId: InvokeMCP

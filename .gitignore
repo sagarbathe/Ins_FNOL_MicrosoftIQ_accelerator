@@ -1,0 +1,23 @@
+# Local-only scratch folder (docx build scripts, working copies) - not part of the repo
+local/
+
+# Tenant-specific secrets/config - copy .env.example to .env and fill in your own values
+.env
+
+# Runtime-generated IDs written by fabric/foundry scripts on first run (tenant-specific)
+fabric/ontology_id.txt
+fabric/data_agent_id.txt
+fabric/adjuster_relationship_id.txt
+foundry/agent_id.txt
+
+# Debug/duplicate Copilot Studio agent exports from troubleshooting sessions
+copilotstudio/AutoFNOLAgent_check/
+copilotstudio/AutoFNOLAgent_check2/
+copilotstudio/AutoFNOLAgent_fresh/
+copilotstudio/AutoFNOLAgent_verify/
+copilotstudio/clone_existing/
+copilotstudio/MicrosoftIQAgent_ref/
+copilotstudio/*.zip
+
+# Word temp lock files
+~$*.docx

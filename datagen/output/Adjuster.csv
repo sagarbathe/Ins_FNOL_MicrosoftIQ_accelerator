@@ -1,0 +1,16 @@
+AdjusterId,Name,Email,Specialty,Region,CurrentCaseload,AvailabilityStatus
+ADJ-001,Angela Martin,terrytyler@example.org,Injury,Southwest,5,Busy
+ADJ-002,Lori Carter,thomasfisher@example.net,Injury,Northeast,26,Available
+ADJ-003,Dorothy Brown,marystone@example.com,Collision,Southwest,11,Available
+ADJ-004,Grant Lucas,todd88@example.com,Injury,Northeast,20,Available
+ADJ-005,Keith Villanueva,george43@example.com,Collision,Midwest,14,Available
+ADJ-006,Dwayne Bruce,michaelbryant@example.org,Injury,Southwest,10,Available
+ADJ-007,Caitlyn Nichols,teresafranco@example.net,Total Loss,West,16,Out of Office
+ADJ-008,Rebecca Martin,williamsleslie@example.org,Total Loss,West,15,Available
+ADJ-009,Jacob Harris,wadetiffany@example.org,Collision,West,14,Busy
+ADJ-010,Joshua Martin,david06@example.com,Injury,Midwest,23,Busy
+ADJ-011,Theresa Reilly,adamrodgers@example.net,Collision,Southwest,37,Available
+ADJ-012,Michael Wells,tara92@example.net,Total Loss,South,14,Busy
+ADJ-013,Tammy Morgan,dennisrachel@example.org,General,South,10,Out of Office
+ADJ-014,Audrey Johnson,seandavis@example.org,Comprehensive,South,34,Available
+ADJ-015,Christie Fox,james18@example.com,General,Southwest,26,Available

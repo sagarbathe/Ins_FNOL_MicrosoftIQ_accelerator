@@ -1,0 +1,16 @@
+ClaimId,AtFaultParty,ThirdPartyInsurer,RecoveryLikelihood
+CLM-00017,Third Party,Ferguson-Lyons Insurance,Medium
+CLM-00023,Third Party,Morales Group Insurance,High
+CLM-00038,Third Party,"Hendrix, Green and Nunez Insurance",High
+CLM-00042,Third Party,"Smith, Ray and Tran Insurance",High
+CLM-00045,Third Party,Tucker LLC Insurance,Medium
+CLM-00065,Third Party,"Pittman, Campbell and Martin Insurance",High
+CLM-00070,Third Party,"Brown, Green and Hudson Insurance",Medium
+CLM-00082,Third Party,Cameron Inc Insurance,Medium
+CLM-00084,Third Party,Murphy Inc Insurance,Medium
+CLM-00087,Third Party,Stewart-Reyes Insurance,Medium
+CLM-00088,Third Party,Mcgee-Mack Insurance,High
+CLM-00089,Third Party,Valdez-Hays Insurance,High
+CLM-00091,Third Party,"Soto, Morrison and Franklin Insurance",Low
+CLM-00092,Third Party,Pruitt Group Insurance,Medium
+CLM-00118,Third Party,Guzman PLC Insurance,Low

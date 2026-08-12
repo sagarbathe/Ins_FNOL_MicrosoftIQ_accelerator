@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: Auto FNOL Triage Agent - Azure AI Search
+  description: This knowledge source provides information about a pre-built Vector Index that can be used to improve agent response
+kind: KnowledgeSourceConfiguration
+source:
+  kind: AzureAISearchSource
+  connectionReference: safnol_AutoFNOLTriageAgent.cr.2vWdiFu5
+  indexName: auto-fnol-kb-index
+  selectFields:
+    - id
+    - docId
+    - title
+    - chunkIndex
+    - content
+  semanticConfigurationName: default-semantic

@@ -1,0 +1,9 @@
+ClaimId,SignalType,ScoreValue
+CLM-00026,Repair shop flagged in prior SIU investigation,0.86
+CLM-00027,Loss description inconsistent with damage pattern,0.69
+CLM-00028,Loss description inconsistent with damage pattern,0.88
+CLM-00071,Claimant linked to prior suspicious claim,0.73
+CLM-00080,Repair shop flagged in prior SIU investigation,0.92
+CLM-00081,Repair shop flagged in prior SIU investigation,0.75
+CLM-00095,Loss description inconsistent with damage pattern,0.71
+CLM-00120,Loss description inconsistent with damage pattern,0.68
