@@ -1,6 +1,4 @@
 ﻿connectionReferences:
-  - connectionReferenceLogicalName: copilots_header_cr29a_agent1.shared_fabricdataagent.737baa9ccc6d4ed8a7c09681030c076b
-    connectorId: /providers/Microsoft.PowerApps/apis/shared_fabricdataagent
   - connectionReferenceLogicalName: safnol_AutoFNOLTriageAgent.cr.2vWdiFu5
     connectorId: /providers/Microsoft.PowerApps/apis/shared_azureaisearch
   - connectionReferenceLogicalName: safnol_AutoFNOLTriageAgent.shared_a365copilotchatmcp.shared-a365copilotch-140cf106-bbe0-44ec-94c2-f2374d519a7a
@@ -9,3 +7,5 @@
     connectorId: /providers/Microsoft.PowerApps/apis/shared_a365outlookmailmcp
   - connectionReferenceLogicalName: safnol_AutoFNOLTriageAgent.shared_azureagentservice.2a538b102b33466abec7350c7e94b20c
     connectorId: /providers/Microsoft.PowerApps/apis/shared_azureagentservice
+  - connectionReferenceLogicalName: safnol_AutoFNOLTriageAgent.shared_fabricdataagent.092e24ebbeb5473184412a264c17973a
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_fabricdataagent

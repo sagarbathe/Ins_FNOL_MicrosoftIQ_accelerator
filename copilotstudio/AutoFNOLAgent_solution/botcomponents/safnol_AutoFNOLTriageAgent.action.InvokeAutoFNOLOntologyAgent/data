@@ -2,11 +2,13 @@ kind: TaskDialog
 inputs:
   - kind: ManualTaskInput
     propertyName: artifactId
-    value: f4f24b3a-8cb2-4f33-88ad-04ba57d8be8a
+    # TODO: replace with your own Fabric Data Agent ID before importing this solution
+    value: <YOUR_FABRIC_DATA_AGENT_ID>
 
   - kind: ManualTaskInput
     propertyName: workspaceId
-    value: 4fb5c773-27f6-4f0d-9eb0-f040abfdd977
+    # TODO: replace with your own Fabric Workspace ID before importing this solution
+    value: <YOUR_FABRIC_WORKSPACE_ID>
 
 modelDisplayName: InvokeAutoFNOLOntologyAgent
 modelDescription: You are the Fabric Ontology Data Agent for an Auto FNOL (First Notice of Loss) Triage solution. Answer natural-language questions using the AutoFNOL_Ontology graph, which models Policyholder, Vehicle, Adjuster, RepairShop, Policy, Claim, FraudSignal, and SubrogationFlag entities and the governed relationships between them (relatesToPolicy, involvesVehicle, repairedAtShop, hasFraudSignal, hasSubrogationFlag, belongsToPolicyholder, coversVehicle)

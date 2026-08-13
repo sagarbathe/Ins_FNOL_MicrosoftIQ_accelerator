@@ -31,8 +31,15 @@ conversation:
 
 ```
                          ┌───────────────────────────┐
-   FNOL email  ────────► │   Copilot Studio Agent     │◄──── Adjuster chat (Teams / M365 Copilot)
-   (Outlook)              │  "Auto FNOL Triage Agent" │
+   FNOL Email Intake ───►│  Power Automate Flow       │
+   Trigger flow           │  "FNOL Email Intake        │
+   (Outlook mailbox)      │   Trigger"                 │
+                         └─────────────┬─────────────┘
+                                       │ calls agent (unattended)
+                                       ▼
+                         ┌───────────────────────────┐
+   Adjuster chat ───────►│   Copilot Studio Agent     │
+   (Teams / M365 Copilot) │  "Auto FNOL Triage Agent" │
                          └─────────────┬─────────────┘
                                        │ routes by question type
         ┌──────────────────────────────┼──────────────────────────────┐
@@ -58,6 +65,13 @@ first (real record lookups); general coverage/policy-concept or process question
 **Foundry IQ** first (knowledge retrieval); compound questions use both. Work IQ tools are
 available throughout for mail/search actions.
 
+**Email intake path:** the **FNOL Email Intake Trigger** Power Automate flow watches a
+designated Outlook mailbox folder, calls the Triage Agent to screen each incoming email for
+severity/urgency and SIU fraud red flags directly from the narrative text (no tool calls, since
+the flow runs unattended without an interactively-signed-in user), and posts a Teams
+notification summarizing the assessment and any red flags found — surfacing potential fraud
+signals at intake time, before an adjuster ever opens the email.
+
 ## Configuration
 
 No tenant-specific values (workspace/lakehouse/agent IDs, endpoints, resource names) are
@@ -72,12 +86,46 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
 4. For the Copilot Studio solution in `copilotstudio/`, replace the `<YOUR_FABRIC_...>`
    placeholders in `actions/InvokeAutoFNOLOntologyAgent.mcs.yml` with your own Fabric Data
    Agent ID and Workspace ID before importing.
+5. For the Power Automate flow in `copilotstudio/AutoFNOLAgent_solution/Workflows/
+   FNOLEmailIntakeTrigger-*.json`, replace the `<YOUR_MAILBOX_INBOX_FOLDER_ID>`,
+   `<YOUR_MAILBOX_TARGET_FOLDER_ID>`, and `<YOUR_MAILBOX_TARGET_FOLDER_NAME>` placeholders
+   (in the trigger's `metadata` and `folderPath`) with your own Outlook mailbox folder
+   identifiers before importing — these are unique to each mailbox and cannot be reused
+   across tenants. The easiest way to get valid values is to import the flow once with
+   placeholder text, then re-point the trigger's folder in the Power Automate designer (which
+   will populate the correct IDs for your mailbox), or inspect an existing "When a new email
+   arrives" trigger's folder picker in your own environment.
 
 ## Components
 
 - **`copilotstudio/`** — The Copilot Studio agent solution (`AutoFNOLAgent`): orchestration
   instructions, topics, and actions wiring together the Fabric ontology agent, the Foundry
   knowledge agent, and the two Work IQ MCP tools (M365 Copilot search, Outlook Mail).
+- **`copilotstudio/AutoFNOLAgent_solution/`** — Raw Dataverse solution export (`pac solution
+  export`/`unpack` format) containing the **FNOL Email Intake Trigger** Power Automate cloud
+  flow (`Workflows/FNOLEmailIntakeTrigger-*.json`), packaged together with the
+  `safnol_AutoFNOLTriageAgent` bot components. This is a *separate* export format from
+  `copilotstudio/AutoFNOLAgent/` because Power Automate flows are not accessible via the
+  `pac copilot pull/push` tooling — only via full Dataverse solution export/import
+  (`pac solution export`, `pac solution unpack`, `pac solution pack`, `pac solution import`).
+  The flow:
+  - Triggers on **When a new email arrives (V3)** in a designated Outlook mailbox folder
+    (folder IDs are tenant-specific — see [Configuration](#configuration)).
+  - Calls the Triage Agent (`safnol_AutoFNOLTriageAgent`) via `ExecuteCopilotAsyncV2` and asks
+    it to (a) flag severity/urgency indicators (injury, total loss, fire, hit-and-run, etc.)
+    and (b) independently screen the raw email text for SIU fraud red flags (reporting delay,
+    no police report, vague cause, no witnesses, claimed total loss) — based purely on the
+    narrative, without calling any tools/data lookups, since this flow runs unattended and
+    interactive-auth-gated tools (e.g. the Foundry knowledge tool) cannot complete without a
+    signed-in user.
+  - Parses the agent's JSON response (`response_message`, `is_urgent`, `red_flags`) and posts
+    a Teams message summarizing the analysis and any identified red flags when the email is
+    urgent.
+- **`copilotstudio/MicrosoftIQAccelerator/`** — Raw Dataverse solution export for the separate,
+  unrelated **Microsoft IQ Accelerator** solution (bot `crfaa_MicrosoftIQAgent`, generic
+  supply-chain/retail scenario). Included for reference/version-control completeness only —
+  it is **not** part of the Auto FNOL triage flow and was not modified as part of this
+  accelerator's SIU fraud-screening work.
 - **`fabric/`** — Scripts to create the Fabric **ontology/graph model** over the lakehouse
   (Policy, Policyholder, Vehicle, Claim, Adjuster, FraudSignal, SubrogationFlag entities and
   their relationships) and configure/publish the **Fabric Data Agent** that serves it via MCP.
@@ -136,10 +184,20 @@ Full step-by-step instructions, including exact scripts to run and troubleshooti
    `<YOUR_FABRIC_...>` placeholders from Section 1), then `pac copilot publish` and enable the
    Teams channel. See doc section *"5. Deploy the Copilot Studio Orchestrator Agent
    (copilotstudio/)"*.
-6. **Validate end-to-end** — test structured (Fabric), general-knowledge (Foundry), compound, and
+6. **Deploy the FNOL mailbox-intake flow** — pack and import the Power Automate solution:
+   `pac solution pack --zipfile <zip> --folder copilotstudio/AutoFNOLAgent_solution
+   --packagetype Unmanaged`, then `pac solution import --path <zip> --publish-changes`. After
+   import, reconnect the flow's `shared_office365`/`shared_teams`/`shared_microsoftcopilotstudio`
+   connection references and re-point the trigger's mailbox folder (see
+   [Configuration](#configuration) item 5) in the Power Automate designer, since folder IDs are
+   mailbox-specific and cannot be pre-filled generically.
+7. **Validate end-to-end** — test structured (Fabric), general-knowledge (Foundry), compound, and
    Work IQ questions in both Copilot Studio Test chat and Teams, using
-   `documents/Auto_FNOL_Sample_Emails.docx` as ready-made scenarios. See doc section
-   *"6. Validate End-to-End"*.
-7. **Troubleshooting** — common errors (missing `.env` values, Foundry activity-protocol error, 429
-   throttling, Fabric MCP failures, M365 Copilot Chat limitations) and fixes are in doc section
-   *"7. Troubleshooting Quick Reference"*.
+   `documents/Auto_FNOL_Sample_Emails.docx` as ready-made scenarios. Also send a live test email
+   to the configured mailbox folder to confirm the FNOL Email Intake Trigger flow posts a Teams
+   message with urgency/red-flag analysis. See doc section *"6. Validate End-to-End"*.
+8. **Troubleshooting** — common errors (missing `.env` values, Foundry activity-protocol error, 429
+   throttling, Fabric MCP failures, M365 Copilot Chat limitations, broken connection references
+   after `pac copilot pull`, and `Parse_JSON_of_agent_response` null-content errors caused by
+   interactive-auth-gated tools failing in the unattended flow context) and fixes are in doc
+   section *"7. Troubleshooting Quick Reference"*.

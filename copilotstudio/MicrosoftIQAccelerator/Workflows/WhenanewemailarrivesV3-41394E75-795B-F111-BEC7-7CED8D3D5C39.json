@@ -46,15 +46,14 @@
         "When_a_new_email_arrives_(V3)": {
           "splitOn": "@triggerOutputs()?['body/value']",
           "metadata": {
-            "Id::AAMkADBiZWY2MjdiLTkwNGQtNGQ4MC04NDc4LTcyZTc3ZDM1MTk5OAAuAAAAAADj6Fu0-kauRKfVxfA1S_zNAQBoetjzyf-rRor8F7ceWcBTAAAAAAEMAAA=": "Inbox",
-            "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAHDxkoJAAA=": "Microsoft-IQ-accelerator",
-            "operationMetadataId": "09a2ee7e-d42b-47d0-aceb-99e9343d462f",
-            "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAAAAAEMAAA=": "Inbox"
+            "Id::<YOUR_MAILBOX_INBOX_FOLDER_ID>": "Inbox",
+            "Id::<YOUR_MAILBOX_TARGET_FOLDER_ID>": "<YOUR_MAILBOX_TARGET_FOLDER_NAME>",
+            "operationMetadataId": "09a2ee7e-d42b-47d0-aceb-99e9343d462f"
           },
           "type": "OpenApiConnectionNotification",
           "inputs": {
             "parameters": {
-              "folderPath": "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAAAAAEMAAA="
+              "folderPath": "Id::<YOUR_MAILBOX_TARGET_FOLDER_ID>"
             },
             "host": {
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
