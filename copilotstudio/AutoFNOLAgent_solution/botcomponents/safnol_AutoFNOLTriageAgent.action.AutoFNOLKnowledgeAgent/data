@@ -1,0 +1,17 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: AgentId
+    value: Auto-FNOL-Knowledge-Agent
+
+modelDisplayName: Auto FNOL Knowledge Agent
+modelDescription: "You are the Auto FNOL Knowledge Assistant for Contoso Insurance. You answer questions from claims adjusters and the Copilot Studio orchestration agent about: - Auto policy wording, coverage parts, and exclusions - FNOL triage tiers and adjuster assignment rules - SIU fraud referral red flags and process - State regulatory claim-handling requirements (East States / South States) - Subrogation identification methodology"
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: safnol_AutoFNOLTriageAgent.shared_azureagentservice.2a538b102b33466abec7350c7e94b20c
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ActivityProtocolMetadata
+    operationId: SendActivityV2

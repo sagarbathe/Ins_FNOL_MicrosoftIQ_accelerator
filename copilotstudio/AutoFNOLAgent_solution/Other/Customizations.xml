@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26071.168" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00147">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="copilots_header_cr29a_agent1.shared_fabricdataagent.737baa9ccc6d4ed8a7c09681030c076b">
+      <connectionreferencedisplayname>copilots_header_cr29a_agent1.shared_fabricdataagent.737baa9ccc6d4ed8a7c09681030c076b</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_fabricdataagent</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.cr.2vWdiFu5">
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_azureaisearch</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_a365copilotchatmcp.shared-a365copilotch-140cf106-bbe0-44ec-94c2-f2374d519a7a">
+      <connectionreferencedisplayname>safnol_AutoFNOLTriageAgent.shared_a365copilotchatmcp.shared-a365copilotch-140cf106-bbe0-44ec-94c2-f2374d519a7a</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_a365outlookmailmcp.shared-a365outlookma-a8c99036-814f-4d0d-a5fb-9bf20ab8055f">
+      <connectionreferencedisplayname>safnol_AutoFNOLTriageAgent.shared_a365outlookmailmcp.shared-a365outlookma-a8c99036-814f-4d0d-a5fb-9bf20ab8055f</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365outlookmailmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_azureagentservice.2a538b102b33466abec7350c7e94b20c">
+      <connectionreferencedisplayname>safnol_AutoFNOLTriageAgent.shared_azureagentservice.2a538b102b33466abec7350c7e94b20c</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_azureagentservice</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_fabricdataagent.092e24ebbeb5473184412a264c17973a">
+      <connectionreferencedisplayname>safnol_AutoFNOLTriageAgent.shared_fabricdataagent.092e24ebbeb5473184412a264c17973a</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_fabricdataagent</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

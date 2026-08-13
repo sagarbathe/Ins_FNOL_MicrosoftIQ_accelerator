@@ -1,0 +1,10 @@
+<botcomponent schemaname="crfaa_MicrosoftIQAgent.action.DocumentIntelligenceAgent">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Document Intelligence Agent</name>
+  <parentbotid>
+    <schemaname>crfaa_MicrosoftIQAgent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

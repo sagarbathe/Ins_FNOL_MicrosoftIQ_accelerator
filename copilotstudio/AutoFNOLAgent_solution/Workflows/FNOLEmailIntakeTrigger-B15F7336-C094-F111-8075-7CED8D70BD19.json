@@ -1,0 +1,218 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_microsoftcopilotstudio": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedmicrosoftcopilotstudio_d0307"
+        },
+        "api": {
+          "name": "shared_microsoftcopilotstudio"
+        }
+      },
+      "shared_teams": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedteams_77811"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_448f9"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_new_email_arrives_(V3)": {
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "Id::AAMkADBiZWY2MjdiLTkwNGQtNGQ4MC04NDc4LTcyZTc3ZDM1MTk5OAAuAAAAAADj6Fu0-kauRKfVxfA1S_zNAQBoetjzyf-rRor8F7ceWcBTAAAAAAEMAAA=": "Inbox",
+            "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAHDxkoJAAA=": "Microsoft-IQ-accelerator",
+            "operationMetadataId": "09a2ee7e-d42b-47d0-aceb-99e9343d462f",
+            "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAAAAAEMAAA=": "Inbox"
+          },
+          "type": "OpenApiConnectionNotification",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "OnNewEmailV3",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "folderPath": "Id::AAMkADc3NDkxMWZiLWI0NjQtNDc5NS1iZWRhLTg3YzJmNTBmYzdmNgAuAAAAAACUASpOOoU0RqThKO1SL3HvAQAzeTuyJwlaRb53Nd6blZozAAAAAAEMAAA="
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_response_json_schema": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "9ed11f17-6af6-4297-986b-03718390b70a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "response_json_schema",
+                "type": "string",
+                "value": "{\n    \"response_message\": \"text\",\n    \"is_urgent\": true,\n    \"red_flags\": [\"text\"],\n}"
+              }
+            ]
+          }
+        },
+        "Execute_Agent_and_wait": {
+          "runAfter": {
+            "Initialize_response_json_schema": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "10864b63-775a-49ad-b513-e6b848b89a7d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_microsoftcopilotstudio",
+              "operationId": "ExecuteCopilotAsyncV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio"
+            },
+            "parameters": {
+              "Copilot": "safnol_AutoFNOLTriageAgent",
+              "body/message": "Determine if the Message Content is a First Notice of Loss (FNOL) submission requiring urgent triage. Specifically determine via impacting verbiage like injury, injured, hurt, ambulance, hospital, total loss, totaled, multiple vehicles, fire, rollover, unresponsive, hit and run, or fatality. ALSO separately screen the Message Content for SIU (Special Investigations Unit) fraud red flags per the SIU Fraud Referral Playbook, specifically: (1) reporting delay - the loss is reported significantly later than it occurred (days/weeks after the fact) with no injury/incapacity justification, (2) no police report filed despite circumstances (collision, hit-and-run, disputed cause) that would typically warrant one, (3) vague, inconsistent, or uncertain description of how the loss occurred, (4) no corroborating witnesses/cameras/third parties, (5) claimant asserts or implies the vehicle is a total loss or requests expedited/direct payment, (6) any other SIU-style red flag (early-loss timing, financial distress, prior similar claims). List every such red flag you find as short, specific strings (e.g., 'FNOL reported ~2-3 weeks after the loss occurred', 'No police report filed', 'Policyholder states the vehicle is likely a total loss') in the red_flags array - do not score them yourself, just identify and quote/paraphrase the specific facts from the email. If one or more red flags are found, use your Foundry knowledge tool to compare them against the SIU Fraud Referral Playbook's red-flag indicator categories and scoring guidance, and include in response_message whether manual SIU screening/referral is warranted per the playbook, citing the specific playbook indicators that apply - note that no Claim record may exist yet for this loss, so evaluate based on the narrative alone rather than reporting 'no fraud indicators' from an empty data lookup. Treat the message as urgent (is_urgent = true) if it meets the severity criteria above OR if any red_flags were identified. If urgent, tell the user that the claim may be urgent, include some details from the message (policy number, loss description, injuries if mentioned, red flags and SIU assessment if applicable), and also include a maximum of 3 next-step, constructive prompts for the user based on the content of the message. These prompt options should help the user investigate further using your other tools. If a specific policy number or claim is determined, focus the followup prompts directly on that policy and claim. Format your response in JSON format only using the following schema: @{variables('response_json_schema')}. Do not wrap in tildas, only return proper JSON format and no other text before or after. Message Content: @{triggerOutputs()?['body/body']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Parse_JSON_of_agent_response": {
+          "runAfter": {
+            "Clean_agent_response": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e83fe678-424c-4ec9-8d30-03895f0761c2"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Clean_agent_response')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response_message": {
+                  "type": "string"
+                },
+                "is_urgent": {
+                  "type": "boolean"
+                },
+                "red_flags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Is_email_urgent": {
+          "actions": {
+            "Post_message_in_a_chat_or_channel": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d5354f63-a29d-41e7-8903-03c8b27b50b2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_teams",
+                  "operationId": "PostMessageToConversation",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+                },
+                "parameters": {
+                  "poster": "Power Virtual Agents",
+                  "location": "powerva",
+                  "body/bot": "safnol_AutoFNOLTriageAgent",
+                  "body/recipient": "@triggerOutputs()?['body/toRecipients']",
+                  "body/messageBody": "<p class=\"editor-paragraph\">Hi, I am an agent here to assist you. I have reviewed a recent incoming email. It seems this email may require urgent attention. Please see analysis below:<br><br>From: @{triggerOutputs()?['body/from']}<br><br>Subject: @{triggerOutputs()?['body/subject']}<br><br>@{body('Parse_JSON_of_agent_response')?['response_message']}<br><br>Red Flags Identified: @{if(greater(length(body('Parse_JSON_of_agent_response')?['red_flags']), 0), join(body('Parse_JSON_of_agent_response')?['red_flags'], '; '), 'None identified')}<br><br><span style=\"font-size: 13px;\">AI-generated content may be incorrect.</span></p>",
+                  "body/attribution": true,
+                  "body/activeChat": "Send",
+                  "body/installedError": "Fail"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Parse_JSON_of_agent_response": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "15239824-d13d-4f61-9855-fdac6c36162a"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@body('Parse_JSON_of_agent_response')?['is_urgent']",
+                  true
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7bd633d3-e667-4299-8206-2bf49fa57423"
+          },
+          "type": "If"
+        },
+        "Clean_agent_response": {
+          "runAfter": {
+            "Execute_Agent_and_wait": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9a05080c-7ccc-4dae-a7d6-210853fe5522"
+          },
+          "type": "Compose",
+          "inputs": "@replace(replace(replace(outputs('Execute_Agent_and_wait')?['body/lastResponse'], 'json', ''), '```', ''), '`', '')"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26071.168" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00147">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="crfaa_MicrosoftIQAgent.shared_a365copilotchatmcp.shared-a365copilotch-7c0c3874-a9be-40ec-b2eb-c41ce0992ed2">
+      <connectionreferencedisplayname>crfaa_MicrosoftIQAgent.shared_a365copilotchatmcp.shared-a365copilotch-7c0c3874-a9be-40ec-b2eb-c41ce0992ed2</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_MicrosoftIQAgent.shared_a365memcp.shared-a365memcp-d51f9e58-32f7-4622-b4e0-c63f02bae1ea">
+      <connectionreferencedisplayname>crfaa_MicrosoftIQAgent.shared_a365memcp.shared-a365memcp-d51f9e58-32f7-4622-b4e0-c63f02bae1ea</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365memcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_MicrosoftIQAgent.shared_a365outlookmailmcp.cfcbf860a326461f822ef23454467837">
+      <connectionreferencedisplayname>crfaa_MicrosoftIQAgent.shared_a365outlookmailmcp.cfcbf860a326461f822ef23454467837</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365outlookmailmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_MicrosoftIQAgent.shared_azureagentservice.f375407fbb024088b138a43594e0138a">
+      <connectionreferencedisplayname>crfaa_MicrosoftIQAgent.shared_azureagentservice.f375407fbb024088b138a43594e0138a</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_azureagentservice</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_MicrosoftIQAgent.shared_fabricdataagent.shared-fabricdataage-42eec823-45fe-4057-99a5-deeaf175d1ce">
+      <connectionreferencedisplayname>crfaa_MicrosoftIQAgent.shared_fabricdataagent.shared-fabricdataage-42eec823-45fe-4057-99a5-deeaf175d1ce</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_fabricdataagent</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_sharedmicrosoftcopilotstudio_60b17">
+      <connectionreferencedisplayname>Microsoft Copilot Studio Cr8481e-60b17</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="crfaa_sharedoffice365_85ece">
+      <connectionreferencedisplayname>Office 365 Outlook Cr8481e-85ece</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_sharedmicrosoftcopilotstudio_d0307">
+      <connectionreferencedisplayname>Microsoft Copilot Studio</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_sharedoffice365_448f9">
+      <connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_sharedteams_77811">
+      <connectionreferencedisplayname>Microsoft Teams</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_teams</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_sharedteams_eb157">
+      <connectionreferencedisplayname>Microsoft Teams</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_teams</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

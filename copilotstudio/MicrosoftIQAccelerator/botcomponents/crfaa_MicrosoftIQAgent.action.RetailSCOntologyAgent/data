@@ -1,0 +1,21 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: artifactId
+    value: 6dc29547-619c-4224-8762-fbf1dac5904f
+
+  - kind: ManualTaskInput
+    propertyName: workspaceId
+    value: 9b291db7-d8d2-4ad7-acc6-70fcc1738bcf
+
+modelDisplayName: RetailSC Ontology Agent
+modelDescription: "A Fabric-based Data Agent that answers analytical questions over the Retail Supply Chain Ontology using natural language.  Use this agent for questions about: • Inventory & warehouses: current/reserved/available stock etc. • Demand forecasting: predicted vs. actual etc. • Suppliers & procurement: supplier profiles, reliability scores etc.• Products & catalog: product details, categories etc. • Supply chain risk & disruption events: event severity, disruption type etc."
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: crfaa_MicrosoftIQAgent.shared_fabricdataagent.shared-fabricdataage-42eec823-45fe-4057-99a5-deeaf175d1ce
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ModelContextProtocolMetadata
+    operationId: InvokeMCP

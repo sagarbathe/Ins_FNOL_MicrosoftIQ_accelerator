@@ -1,0 +1,17 @@
+<botcomponent_connectionreferenceset>
+  <botcomponent_connectionreference botcomponentid.schemaname="safnol_AutoFNOLTriageAgent.action.AutoFNOLKnowledgeAgent" connectionreferenceid.connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_azureagentservice.2a538b102b33466abec7350c7e94b20c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="safnol_AutoFNOLTriageAgent.action.InvokeAutoFNOLOntologyAgent" connectionreferenceid.connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_fabricdataagent.092e24ebbeb5473184412a264c17973a">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="safnol_AutoFNOLTriageAgent.action.WorkIQCopilotMCP-WorkIQCopilotPreview" connectionreferenceid.connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_a365copilotchatmcp.shared-a365copilotch-140cf106-bbe0-44ec-94c2-f2374d519a7a">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="safnol_AutoFNOLTriageAgent.action.WorkIQMailMCP-WorkIQMailPreview" connectionreferenceid.connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.shared_a365outlookmailmcp.shared-a365outlookma-a8c99036-814f-4d0d-a5fb-9bf20ab8055f">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="safnol_AutoFNOLTriageAgent.topic.AutoFNOLTriageAgentAzureAISearch_GMwS67fXCv3zUHPp0bmKL" connectionreferenceid.connectionreferencelogicalname="safnol_AutoFNOLTriageAgent.cr.2vWdiFu5">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+</botcomponent_connectionreferenceset>

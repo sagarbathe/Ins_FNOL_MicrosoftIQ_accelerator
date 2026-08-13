@@ -1,0 +1,10 @@
+<botcomponent schemaname="crfaa_MicrosoftIQAgent.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Start Over</name>
+  <parentbotid>
+    <schemaname>crfaa_MicrosoftIQAgent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

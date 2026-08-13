@@ -1,0 +1,11 @@
+<botcomponent schemaname="safnol_AutoFNOLTriageAgent.topic.AutoFNOLTriageAgentAzureAISearch_GMwS67fXCv3zUHPp0bmKL">
+  <componenttype>16</componenttype>
+  <description>This knowledge source provides information about a pre-built Vector Index that can be used to improve agent response</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Auto FNOL Triage Agent - Azure AI Search</name>
+  <parentbotid>
+    <schemaname>safnol_AutoFNOLTriageAgent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

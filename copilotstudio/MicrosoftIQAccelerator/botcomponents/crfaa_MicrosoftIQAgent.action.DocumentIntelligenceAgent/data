@@ -1,0 +1,17 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: AgentId
+    value: ChatAgent
+
+modelDisplayName: Document Intelligence Agent
+modelDescription: You are a data analyst assistant for Microsoft IQ with access to documents and reference materials.  Managing delivery operations, inventory logistics, and supplier relationships.
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: crfaa_MicrosoftIQAgent.shared_azureagentservice.f375407fbb024088b138a43594e0138a
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ActivityProtocolMetadata
+    operationId: SendActivityV2

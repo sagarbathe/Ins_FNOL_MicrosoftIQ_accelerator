@@ -1,0 +1,10 @@
+<botcomponent schemaname="safnol_AutoFNOLTriageAgent.action.WorkIQMailMCP-WorkIQMailPreview">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Work IQ Mail MCP - Work IQ Mail (Preview)</name>
+  <parentbotid>
+    <schemaname>safnol_AutoFNOLTriageAgent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

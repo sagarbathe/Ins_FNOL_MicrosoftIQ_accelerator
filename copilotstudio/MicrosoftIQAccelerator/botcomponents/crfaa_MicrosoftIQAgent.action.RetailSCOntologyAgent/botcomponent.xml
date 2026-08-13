@@ -1,0 +1,10 @@
+<botcomponent schemaname="crfaa_MicrosoftIQAgent.action.RetailSCOntologyAgent">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>RetailSC Ontology Agent</name>
+  <parentbotid>
+    <schemaname>crfaa_MicrosoftIQAgent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
