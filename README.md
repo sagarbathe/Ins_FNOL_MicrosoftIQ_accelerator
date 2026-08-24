@@ -101,6 +101,15 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
 - **`copilotstudio/`** — The Copilot Studio agent solution (`AutoFNOLAgent`): orchestration
   instructions, topics, and actions wiring together the Fabric ontology agent, the Foundry
   knowledge agent, and the two Work IQ MCP tools (M365 Copilot search, Outlook Mail).
+  - **Work IQ vs. Foundry IQ knowledge**: Foundry IQ (Azure AI Search) is the governed,
+    versioned knowledge base (policy wording, SIU playbook, subrogation methodology). Work IQ
+    (the M365 Copilot search tool) instead searches the signed-in user's live SharePoint,
+    OneDrive, Outlook, and Teams content in real time — useful for time-sensitive or ad hoc
+    guidance that hasn't (yet) been indexed into Foundry. The agent's instructions
+    (`agent.mcs.yml`) explicitly call out one such scenario: if a message references a named
+    storm/CAT event, the agent uses Work IQ to look for an interim CAT claims bulletin (see
+    `documents/workiq_samples/`) rather than relying on Foundry alone. Work IQ requires an
+    interactively signed-in user and does not work from the unattended Power Automate flow.
 - **`copilotstudio/AutoFNOLAgent_solution/`** — Raw Dataverse solution export (`pac solution
   export`/`unpack` format) containing the **FNOL Email Intake Trigger** Power Automate cloud
   flow (`Workflows/FNOLEmailIntakeTrigger-*.json`), packaged together with the
