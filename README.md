@@ -121,11 +121,6 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
   - Parses the agent's JSON response (`response_message`, `is_urgent`, `red_flags`) and posts
     a Teams message summarizing the analysis and any identified red flags when the email is
     urgent.
-- **`copilotstudio/MicrosoftIQAccelerator/`** — Raw Dataverse solution export for the separate,
-  unrelated **Microsoft IQ Accelerator** solution (bot `crfaa_MicrosoftIQAgent`, generic
-  supply-chain/retail scenario). Included for reference/version-control completeness only —
-  it is **not** part of the Auto FNOL triage flow and was not modified as part of this
-  accelerator's SIU fraud-screening work.
 - **`fabric/`** — Scripts to create the Fabric **ontology/graph model** over the lakehouse
   (Policy, Policyholder, Vehicle, Claim, Adjuster, FraudSignal, SubrogationFlag entities and
   their relationships) and configure/publish the **Fabric Data Agent** that serves it via MCP.
