@@ -106,9 +106,13 @@ hardcoded in this repo. Scripts read configuration from environment variables vi
     (the M365 Copilot search tool) instead searches the signed-in user's live SharePoint,
     OneDrive, Outlook, and Teams content in real time — useful for time-sensitive or ad hoc
     guidance that hasn't (yet) been indexed into Foundry. The agent's instructions
-    (`agent.mcs.yml`) explicitly call out one such scenario: if a message references a named
-    storm/CAT event, the agent uses Work IQ to look for an interim CAT claims bulletin (see
-    `documents/workiq_samples/`) rather than relying on Foundry alone. Work IQ requires an
+    (`agent.mcs.yml`) explicitly call out two such scenarios: (1) if a message references a
+    named storm/CAT event, the agent uses Work IQ Copilot search to look for an interim CAT
+    claims bulletin (see `documents/workiq_samples/`) rather than relying on Foundry alone; and
+    (2) if asked about SIU case routing/ownership, the agent uses Work IQ Mail to search
+    Outlook for recent emails about SIU team/routing changes (e.g., a routing-change
+    announcement email), since operational routing assignments can change more frequently than
+    the governed SIU Fraud Referral Playbook is updated. Work IQ requires an
     interactively signed-in user and does not work from the unattended Power Automate flow.
 - **`copilotstudio/AutoFNOLAgent_solution/`** — Raw Dataverse solution export (`pac solution
   export`/`unpack` format) containing the **FNOL Email Intake Trigger** Power Automate cloud
