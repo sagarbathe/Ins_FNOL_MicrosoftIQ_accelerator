@@ -1,5 +1,16 @@
 # Auto FNOL Triage — Insurance Accelerator for Microsoft IQ
 
+## FSI IQ Accelerator Skill
+
+This repo is the **reference implementation** for the [`fsi-iq-accelerator`](.github/skills/fsi-iq-accelerator/SKILL.md)
+Copilot CLI skill. That skill captures the reusable pattern behind this accelerator — the
+three-IQ routing framework (Fabric IQ / Foundry IQ / Work IQ), the domain entity model shape,
+the repo scaffold, the build sequence with verification gates, and the integration failure modes
+that aren't in product documentation — so it can be applied to build new Financial Services
+accelerators (banking, capital markets, wealth, other insurance lines) without rediscovering these
+lessons from scratch. Use it when asked to "build an FSI accelerator", "port this to banking", or
+"design a Fabric IQ ontology for a new domain".
+
 ## Objective
 
 Insurance carriers spend significant manual effort triaging First Notice of Loss (FNOL)
